@@ -2,39 +2,113 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.2
 
-ApplicationWindow {
-    visible: true
-    width: 640
-    height: 480
-    title: qsTr("Hello World")
+Rectangle{
+    // Идентификатор, по нему будет происходить
+    // обращение к свойствам этого элемента
+    id: canvas;
+    color: "#3e8ef4"
+    radius: 2
+    anchors.rightMargin: 0
+    anchors.bottomMargin: 0
+    anchors.leftMargin: 0
+    anchors.topMargin: 0
+    anchors.fill: parent
+    border.width: 7
+    border.color: "#0f6cb9"
 
-    menuBar: MenuBar {
-        Menu {
-            title: qsTr("File")
-            MenuItem {
-                text: qsTr("&Open")
-                onTriggered: console.log("Open action triggered");
-            }
-            MenuItem {
-                text: qsTr("Exit")
-                onTriggered: Qt.quit();
-            }
-        }
+    // Цвет фона, черный
+
+    // Изменять размер под размеры
+    // родительского элемента
+
+    // Будет получать фокус ввода
+    focus: true
+    TreeView {
+        id: treeView
+        x: 7
+        y: 57
+        width: 243
+        height: 365
+        backgroundVisible: true
+        frameVisible: true
+
     }
 
-    MainForm {
-        anchors.fill: parent
-        button1.onClicked: messageDialog.show(qsTr("Button 1 pressed"))
-        button2.onClicked: messageDialog.show(qsTr("Button 2 pressed"))
+
+
+    Button {
+        id: button_add
+        x: 75
+        y: 24
+        text: qsTr("Добавление")
+
     }
 
-    MessageDialog {
-        id: messageDialog
-        title: qsTr("May I have your attention, please?")
-
-        function show(caption) {
-            messageDialog.text = caption;
-            messageDialog.open();
-        }
+    Button {
+        id: button_left
+        x: 288
+        y: 435
+        width: 28
+        height: 27
+        //iconSource: "/home/skt/MJK555/1.png"
     }
+
+    Button {
+        id: button_right
+        x: 567
+        y: 435
+        width: 28
+        height: 27
+    }
+
+    Button {
+        id: button_turnright
+        x: 513
+        y: 435
+        width: 28
+        height: 27
+    }
+
+    Button {
+        id: button_turnleft
+        x: 345
+        y: 435
+        width: 28
+        height: 27
+    }
+
+    Button {
+        id: button_print
+        x: 89
+        y: 435
+        text: qsTr("Печать")
+        enabled: false
+    }
+
+    Button {
+        id: button_close
+        x: 599
+        y: 11
+        width: 28
+        height: 27
+    }
+
+    Button {
+        id: button_cut
+        x: 401
+        y: 435
+        text: qsTr("Обрезать")
+        tooltip: "Выделите изображение"
+        enabled: false
+    }
+
+    Image {
+        id: image
+        x: 256
+        y: 57
+        width: 376
+        height: 365
+        // source: "qrc:/qtquickplugin/images/template_image.png"
+    }
+
 }

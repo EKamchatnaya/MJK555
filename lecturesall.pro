@@ -1,12 +1,11 @@
 TEMPLATE = app
 
-QT += qml quick widgets
-QT += sql
+QT += core gui sql qml quick widgets
 
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    databasecreate.cpp
+    database.cpp
 
 RESOURCES += qml.qrc
 
@@ -19,4 +18,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    databasecreate.h
+    database.h
+
+DISTFILES +=
